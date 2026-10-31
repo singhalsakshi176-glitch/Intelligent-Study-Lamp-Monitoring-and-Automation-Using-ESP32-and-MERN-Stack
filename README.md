@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Smart Study Lamp Dashboard 💡
 
 A modern, full-stack MERN (MongoDB, Express, React, Node.js) IoT web dashboard that tracks how long a student's study lamp (controlled by an ESP32) remains ON. The dashboard measures productive study time, visualizes daily and 7-day study habits, compares performance against yesterday's benchmarks, and tracks progress towards daily study goals.
@@ -167,3 +168,6 @@ void loop() {
   // Call sendLampState(false) when lamp turns OFF
 }
 ```
+=======
+# Intelligent-Study-Lamp-Monitoring-and-Automation-Using-ESP32-and-MERN-Stack
+>>>>>>> 03ddd72c7c96f0a6689023c7a1036f7307e60ca9

@@ -1,16 +1,72 @@
-# React + Vite
+# Intelligent Study Lamp Monitoring and Automation Using ESP32 and MERN Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+The Intelligent Study Lamp Monitoring and Automation System is an IoT-based project designed to make studying smarter and more efficient.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The system uses ESP32 and sensors to monitor student presence and surrounding light conditions. Based on the collected data, the lamp can automatically adjust its operation.
 
-## React Compiler
+The MERN Stack is used to develop a web dashboard for monitoring lamp status and viewing study session information.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+- **Frontend:** React.js, HTML, CSS, JavaScript
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Hardware:** ESP32
+- **Sensors:** PIR Sensor, LDR Sensor
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+```text
+project/
+├── client/       # React frontend
+├── server/       # Node.js backend
+├── README.md
+└── .gitignore
+```
+
+## Features
+
+- Smart study lamp monitoring
+- Student presence detection
+- Ambient light monitoring
+- Automatic lamp control
+- Web-based dashboard
+- Study session history and statistics
+
+## Installation and Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+### 2. Setup Frontend
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+### 3. Setup Backend
+
+Open another terminal:
+
+```bash
+cd server
+npm install
+```
+
+Configure your environment variables using the provided `.env.example` file, then start the backend using the start script defined in `server/package.json`.
+
+## Project Status
+
+Currently under development. Hardware integration and system testing are in progress.
+
+## Team Members
+
+- Sakshi Singhal
+- Milan Singhal
