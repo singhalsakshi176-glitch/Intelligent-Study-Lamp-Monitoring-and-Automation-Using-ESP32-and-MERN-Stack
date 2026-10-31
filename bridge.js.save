@@ -1,0 +1,36 @@
+const express = require('express');
+const { SerialPort } = require('serialport');
+const { ReadlineParser } = require('serialport/parser-readline');
+const cors = require('cors');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Mac par Serial Port Setup
+const port = new SerialPort({ path: '/dev/cu.usbserial-110', baudRate: 115200 });
+const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }));
+
+let latestStatus = { ldr: 1, dark: true, motion: true, mode: 'AUTO', lamp: 'OFF' };
+
+// ESP32 ka data terminal pe print aur update karna
+parser.on('data', (data) => {
+  console.log('ESP32 Log:', data);
+  if (data.includes('LDR DO:')) {
+    latestStatus.ldr = data.includes('LDR DO: 1') ? 1 : 0;
+    latestStatus.dark = data.includes('Dark: YES');
+    latestStatus.motion = data.includes('MOTION') && !data.includes('NO MOTION');
+    latestStatus.mode = data.includes('Mode: MANUAL') ? 'MANUAL' : 'AUTO';
+    latestStatus.lamp = data.includes('Lamp: ON') ? 'ON' : 'OFF';
+  }
+});
+
+app.get('/api/status', (req, res) => res.json(latestStatus));
+
+app.post('/api/lamp', (req, res) => {
+  const state = req.query.state;
+  port.write(`CMD:LAMP:${state}\n`);
+  res.json({ success: true });
+});
+
+app.listen(8080, () => console.log('Serial Bridge running on http://localhost:8080'));
